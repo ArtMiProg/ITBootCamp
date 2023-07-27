@@ -9,7 +9,7 @@ public interface UserService {
 
     User addUser (UserDto userDto);
 
-    List<User> getAll();
+    List<UserDto> getAll();
 
     boolean saveUser(User user);
 }
