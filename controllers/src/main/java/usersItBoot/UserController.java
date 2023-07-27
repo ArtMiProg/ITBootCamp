@@ -17,6 +17,11 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
+    @GetMapping(value = "/addUser")
+    public UserDto showRegistrationForm() {
+        return new UserDto();
+    }
+
     @PostMapping(value = "/addUser")
     public ResponseEntity<String> addUser(@RequestBody UserDto userDto) {
         User user = userService.addUser(userDto);
