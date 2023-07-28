@@ -16,7 +16,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class UserController {
-
     private static final Logger LOGGER = LogManager.getLogger(UserController.class);
 
     private final UserService userService;
@@ -32,13 +31,10 @@ public class UserController {
         if (userService.saveUser(user)) {
             LOGGER.info("User added successfully");
             return ResponseEntity.ok("User added successfully");
-
         } else {
             LOGGER.error("Failed to add user");
             return ResponseEntity.badRequest().body("Failed to add user");
-
         }
-
     }
 
     @GetMapping(value = "/users")
@@ -47,5 +43,4 @@ public class UserController {
         LOGGER.error("Failed to show list of users");
         return userService.getAll();
     }
-
 }

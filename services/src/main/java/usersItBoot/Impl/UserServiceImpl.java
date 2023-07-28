@@ -10,9 +10,7 @@ import usersItBoot.entity.Role;
 import usersItBoot.entity.User;
 import usersItBoot.repository.UserRepository;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -44,10 +42,13 @@ public class UserServiceImpl implements UserService {
             userDto.setSurname(user.getSurname());
             userDto.setName(user.getName());
             userDto.setPatronymic(user.getPatronymic());
-            userDto.setEmail(userDto.getEmail());
+            userDto.setEmail(user.getEmail());
             userDto.setRoles(Arrays.asList(Role.ROLE_USER));
             usersDto.add(userDto);
         }
+        Collections.sort(usersDto, (userDtoOne, userDtoTwo) -> {
+            return userDtoOne.getEmail().compareTo(userDtoTwo.getEmail());
+        });
         LOGGER.info("Service method getAll executed");
         LOGGER.error("Service method getAll failed");
         return usersDto;

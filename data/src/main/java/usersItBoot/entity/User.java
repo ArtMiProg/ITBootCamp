@@ -8,7 +8,6 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-
 @Data
 @Entity
 public class User {
@@ -19,11 +18,11 @@ public class User {
     @Size(max=40)
     @Column
     private String surname;
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Surname should contain only Latin characters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Name should contain only Latin characters")
     @Size(max=20)
     @Column
     private String name;
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Surname should contain only Latin characters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Patronymic should contain only Latin characters")
     @Size(max=40)
     @Column
     private String patronymic;
