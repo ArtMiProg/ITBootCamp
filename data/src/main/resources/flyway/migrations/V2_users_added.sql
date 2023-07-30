@@ -1,0 +1,10 @@
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('ajs@gmail.com', 'Antony', 'John', 'Shepard');
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('lpg@gmail.com', 'Lockhard', 'Parker', 'Goodwin');
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('mga@gmail.com', 'Mathiu', 'Gerald', 'Andersen');
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('stm@gmail.com', 'Steven', 'Tom', 'MacCormick');
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('abp@gmail.com', 'Artur', 'Tomson', 'Peterson');
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('alf@gmail.com', 'Aaron', 'Lasly', 'Field');
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('aap@gmail.com', 'Antony', 'Alan', 'Po');
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('eld@gmail.com', 'Edgar', 'Luke', 'Dinger');
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('edm@gmail.com', 'Ernest', 'Dilon', 'MacMarphy');
+INSERT INTO `itbootcamp`.`user` (`email`, `name`, `patronymic`, `surname`) VALUES ('bsv@gmail.com', 'Benjamin', 'Solomon', 'Verbovski');

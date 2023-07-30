@@ -1,0 +1,23 @@
+version: '4'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: adminmysql
+      MYSQL_DATABASE: itbootcamp
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: adminmysql
+    ports:
+      - "3306:3306"
+
+  app:
+    image: it-boot-camp-image
+    container_name: it.boot-container
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
