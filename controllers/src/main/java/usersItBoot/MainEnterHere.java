@@ -8,11 +8,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Main implements ApplicationRunner {
+public class MainEnterHere implements ApplicationRunner {
 
-    private static final Logger LOGGER = LogManager.getLogger(Main.class);
+    private static final Logger LOGGER = LogManager.getLogger(MainEnterHere.class);
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        SpringApplication.run(MainEnterHere.class, args);
     }
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {

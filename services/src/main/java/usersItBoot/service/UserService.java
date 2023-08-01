@@ -1,4 +1,4 @@
-package usersItBoot;
+package usersItBoot.service;
 
 import usersItBoot.dto.UserDto;
 import usersItBoot.dto.UserShortDto;

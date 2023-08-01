@@ -1,4 +1,4 @@
-package usersItBoot;
+package usersItBoot.controller;
 
 import exeptions.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import usersItBoot.service.UserService;
 import usersItBoot.dto.UserDto;
 import usersItBoot.dto.UserShortDto;
 import usersItBoot.entity.User;

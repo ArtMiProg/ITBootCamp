@@ -1,4 +1,4 @@
-package usersItBoot.Impl;
+package usersItBoot.service.Impl;
 
 import exeptions.InvalidUserInputException;
 import exeptions.UserNotFoundException;
@@ -10,7 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import usersItBoot.UserService;
+import usersItBoot.service.UserService;
 import usersItBoot.dto.UserDto;
 import usersItBoot.dto.UserShortDto;
 import usersItBoot.entity.Role;

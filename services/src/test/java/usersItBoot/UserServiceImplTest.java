@@ -9,7 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import usersItBoot.Impl.UserServiceImpl;
+import usersItBoot.service.Impl.UserServiceImpl;
 import usersItBoot.dto.UserDto;
 import usersItBoot.dto.UserShortDto;
 import usersItBoot.entity.Role;
