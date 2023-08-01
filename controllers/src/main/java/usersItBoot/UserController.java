@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import usersItBoot.dto.UserDto;
+import usersItBoot.dto.UserShortDto;
 import usersItBoot.entity.User;
 
 import java.util.Collections;
@@ -43,7 +44,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/users")
-    public List<UserDto> getAll(@RequestParam(value = "pageNum",
+    public List<UserShortDto> getAll(@RequestParam(value = "pageNum",
             defaultValue = "1", required = false) int pageNum) {
         try {
             LOGGER.info("List of users provided");
@@ -53,10 +54,10 @@ public class UserController {
         } catch (UserNotFoundException e) {
             // Handle the scenario when the UserNotFoundException is thrown
             LOGGER.error("No users found: " + e.getMessage());
-            return (List<UserDto>) ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
+            return (List<UserShortDto>) ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
         } catch (Exception e) {
             LOGGER.error("Failed to retrieve list of users: " + e.getMessage());
-            return (List<UserDto>) ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
+            return (List<UserShortDto>) ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.emptyList());
         }
     }
 }

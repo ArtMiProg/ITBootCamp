@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import usersItBoot.UserController;
 import usersItBoot.UserService;
 import usersItBoot.dto.UserDto;
+import usersItBoot.dto.UserShortDto;
 import usersItBoot.entity.Role;
 import usersItBoot.entity.User;
 
@@ -74,40 +75,32 @@ public class UserControllerTest {
 
     @Test
     public void testGetAll() throws Exception {
-        List<UserDto> userDtoList = new ArrayList<>();
-        UserDto userDtoOne = new UserDto();
-        userDtoOne.setSurname("Parker");
-        userDtoOne.setName("Jonatan");
-        userDtoOne.setPatronymic("Reez");
+        List<UserShortDto> userShortDtoList = new ArrayList<>();
+        UserShortDto userDtoOne = new UserShortDto();
+        userDtoOne.setFullName("Parker Jonatan Reez");
         userDtoOne.setEmail("pjr@gmail.com");
         userDtoOne.setRoles(Arrays.asList(Role.ROLE_USER));
 
-        UserDto userDtoTwo = new UserDto();
-        userDtoTwo.setSurname("Forester");
-        userDtoTwo.setName("Antuan");
-        userDtoTwo.setPatronymic("Ray");
+        UserShortDto userDtoTwo = new UserShortDto();
+        userDtoTwo.setFullName("Forester Antuan Ray");
         userDtoTwo.setEmail("far@gmail.com");
         userDtoTwo.setRoles(Arrays.asList(Role.ROLE_USER));
 
-        userDtoList.add(userDtoOne);
-        userDtoList.add(userDtoTwo);
+        userShortDtoList.add(userDtoOne);
+        userShortDtoList.add(userDtoTwo);
 
-        when(userService.getAll(anyInt(), anyInt())).thenReturn(userDtoList);
+        when(userService.getAll(anyInt(), anyInt())).thenReturn(userShortDtoList);
 
         mockMvc.perform(get("/users"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("["
                         + "{"
-                        + "\"surname\":\"Parker\","
-                        + "\"name\":\"Jonatan\","
-                        + "\"patronymic\":\"Reez\","
+                        + "\"fullName\":\"Parker Jonatan Reez\","
                         + "\"email\":\"pjr@gmail.com\","
                         + "\"roles\":[\"ROLE_USER\"]"
                         + "},"
                         + "{"
-                        + "\"surname\":\"Forester\","
-                        + "\"name\":\"Antuan\","
-                        + "\"patronymic\":\"Ray\","
+                        + "\"fullName\":\"Forester Antuan Ray\","
                         + "\"email\":\"far@gmail.com\","
                         + "\"roles\":[\"ROLE_USER\"]"
                         + "}"

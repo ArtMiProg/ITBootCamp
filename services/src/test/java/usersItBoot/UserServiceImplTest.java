@@ -11,15 +11,18 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import usersItBoot.Impl.UserServiceImpl;
 import usersItBoot.dto.UserDto;
+import usersItBoot.dto.UserShortDto;
 import usersItBoot.entity.Role;
 import usersItBoot.entity.User;
 import usersItBoot.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -52,6 +55,9 @@ public class UserServiceImplTest {
 
         users.add(userOne);
         users.add(userTwo);
+
+        users.sort(Comparator.comparing(User::getEmail));
+        when(userRepository.findAll()).thenReturn(users);
     }
 
     @Test
@@ -59,12 +65,13 @@ public class UserServiceImplTest {
         UserDto userDto = new UserDto();
         userDto.setName("John");
         userDto.setSurname("Doe");
+        userDto.setPatronymic("Marcus");
         userDto.setEmail("john@example.com");
 
         User expectedUser = new User();
-        expectedUser.setId(null);
         expectedUser.setName("John");
         expectedUser.setSurname("Doe");
+        expectedUser.setPatronymic("Marcus");
         expectedUser.setEmail("john@example.com");
         expectedUser.setRoles(Arrays.asList(Role.ROLE_USER));
 
@@ -96,21 +103,22 @@ public class UserServiceImplTest {
         users.add(userTwo);
         users.add(userOne);
 
+        users.sort(Comparator.comparing(User::getEmail));
         Page<User> usersPage = new PageImpl<>(users);
         when(userRepository.findAll(any(Pageable.class))).thenReturn(usersPage);
 
-        List<UserDto> expectedUserDtoList = new ArrayList<>();
+        List<UserShortDto> expectedUserDtoList = new ArrayList<>();
         for (User user : users) {
-            UserDto userDto = new UserDto();
-            userDto.setSurname(user.getSurname());
-            userDto.setName(user.getName());
-            userDto.setPatronymic(user.getPatronymic());
-            userDto.setEmail(user.getEmail());
-            userDto.setRoles(Arrays.asList(Role.ROLE_USER));
-            expectedUserDtoList.add(userDto);
+            UserShortDto userShortDto = new UserShortDto();
+            String fullName = user.getSurname() + " " + user.getName() + " " + user.getPatronymic();
+            userShortDto.setFullName(fullName);
+            userShortDto.setEmail(user.getEmail());
+            userShortDto.setRoles(Arrays.asList(Role.ROLE_USER));
+            expectedUserDtoList.add(userShortDto);
         }
 
-        List<UserDto> actualUserDtoList = userService.getAll(pageNum, pageSize);
+        List<UserShortDto> actualUserDtoList = userService.getAll(pageNum, pageSize);
+        assertNotNull(actualUserDtoList);
 
         assertEquals(expectedUserDtoList, actualUserDtoList);
         verify(userRepository, times(1)).findAll(any(Pageable.class));

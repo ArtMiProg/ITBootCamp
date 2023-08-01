@@ -6,11 +6,8 @@ import usersItBoot.entity.Role;
 import java.util.List;
 
 @Data
-public class UserDto {
-    private String surname;
-    private String name;
-    private String patronymic;
+public class UserShortDto {
+    private String fullName;
     private String email;
     private List<Role> roles;
 }
-
